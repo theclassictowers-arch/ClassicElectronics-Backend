@@ -1,0 +1,36 @@
+{
+  "database": "classic_electronics",
+  "exportedAt": "2026-02-22T07:49:18.526Z",
+  "collections": [
+    {
+      "collection": "users",
+      "count": 0,
+      "file": "users.json"
+    },
+    {
+      "collection": "orders",
+      "count": 0,
+      "file": "orders.json"
+    },
+    {
+      "collection": "themes",
+      "count": 1,
+      "file": "themes.json"
+    },
+    {
+      "collection": "products",
+      "count": 24,
+      "file": "products.json"
+    },
+    {
+      "collection": "admins",
+      "count": 0,
+      "file": "admins.json"
+    },
+    {
+      "collection": "categories",
+      "count": 21,
+      "file": "categories.json"
+    }
+  ]
+}

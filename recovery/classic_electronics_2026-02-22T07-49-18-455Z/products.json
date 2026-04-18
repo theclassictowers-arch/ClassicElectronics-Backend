@@ -1,0 +1,1125 @@
+[
+  {
+    "_id": "699aa7fb6e76ee00284451f3",
+    "name": "SCG353A043",
+    "slug": "scg353a043-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 12500,
+    "description": "SCG353 series right angle type solenoid valve, 3/4\" port size with threaded G/NPT connections. CE and ISO9001 certified.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-1.png"
+    ],
+    "specifications": {
+      "model": "SCG353A043",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "3/4\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Right angle type solenoid valve with 3/4\" port size. Suitable for dust collection systems and industrial automation.",
+      "features": [
+        "Compact right-angle design",
+        "Quick response time",
+        "High reliability",
+        "Easy installation",
+        "Low power consumption"
+      ],
+      "applications": [
+        "Dust collection systems",
+        "Pneumatic automation",
+        "Industrial cleaning equipment",
+        "Material handling systems"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.475Z",
+    "updatedAt": "2026-02-22T06:53:47.475Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f4",
+    "name": "SCG353A044",
+    "slug": "scg353a044-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 13500,
+    "description": "SCG353 series right angle type solenoid valve, 1\" port size with threaded G/NPT connections.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-1.png"
+    ],
+    "specifications": {
+      "model": "SCG353A044",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "1\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Right angle type solenoid valve with 1\" port size for standard flow applications.",
+      "features": [
+        "Standard flow capacity",
+        "Durable construction",
+        "Quick response",
+        "Easy maintenance"
+      ],
+      "applications": [
+        "Dust collectors",
+        "Pneumatic systems",
+        "Industrial automation"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f5",
+    "name": "SCG353A047",
+    "slug": "scg353a047-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 14500,
+    "description": "SCG353 series right angle type solenoid valve, 1-1/4\" port size for medium flow applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "SCG353A047",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "1-1/4\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Right angle type solenoid valve with 1-1/4\" port size for medium flow requirements.",
+      "features": [
+        "Medium flow capacity",
+        "Industrial-grade materials",
+        "Stable performance",
+        "Quick install"
+      ],
+      "applications": [
+        "Dust collection",
+        "Pneumatic automation",
+        "Industrial processes"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f6",
+    "name": "SCG353A050",
+    "slug": "scg353a050-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 16500,
+    "description": "SCG353 series right angle type solenoid valve, 1-1/2\" port size. High flow capacity for industrial dust collection.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-2.png"
+    ],
+    "specifications": {
+      "model": "SCG353A050",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "1-1/2\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Right angle solenoid valve with 1-1/2\" port for high flow applications.",
+      "features": [
+        "High flow capacity",
+        "Rugged build",
+        "Quick response",
+        "Reliable operation"
+      ],
+      "applications": [
+        "Large dust collectors",
+        "Pneumatic conveying",
+        "Industrial automation"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f7",
+    "name": "SCG353A051",
+    "slug": "scg353a051-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 18500,
+    "description": "SCG353 series right angle type solenoid valve, 2\" port size for high flow applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "SCG353A051",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "2\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Large port right angle solenoid valve with 2\" connection for high throughput systems.",
+      "features": [
+        "Very high flow",
+        "Industrial durability",
+        "Stable sealing",
+        "Easy servicing"
+      ],
+      "applications": [
+        "Dust collectors",
+        "Industrial pneumatics",
+        "High capacity systems"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f8",
+    "name": "SCXE353.060",
+    "slug": "scxe353-060-right-angle-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 17500,
+    "description": "SCXE353.060 equivalent solenoid valve for industrial use. Reliable and robust for dust collection systems.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-2.png"
+    ],
+    "specifications": {
+      "model": "SCXE353.060",
+      "series": "SCG353",
+      "type": "Right Angle Type",
+      "portSize": "1-1/2\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "Both",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "SCXE353.060 right angle pulse valve for demanding industrial environments.",
+      "features": [
+        "High reliability",
+        "Fast response",
+        "Long diaphragm life",
+        "Easy to maintain"
+      ],
+      "applications": [
+        "Dust collection",
+        "Pulse jet cleaning",
+        "Industrial automation"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451f9",
+    "name": "SCR353A230",
+    "slug": "scr353a230-submerged-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 19500,
+    "description": "SCR353 series submerged type solenoid valve, 3\" immersion-type designed for direct manifold box mounting.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "SCR353A230",
+      "series": "SCR353",
+      "type": "Submerged Type",
+      "portSize": "3\"",
+      "connectionType": "Submerged",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Submerged pulse valve for direct manifold mounting, 3\" port size.",
+      "features": [
+        "Submerged mounting",
+        "High flow",
+        "Fast pulse",
+        "Robust diaphragm"
+      ],
+      "applications": [
+        "Industrial dust collection",
+        "Manifold systems",
+        "Pulse jet cleaning"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451fa",
+    "name": "SCR353A235",
+    "slug": "scr353a235-submerged-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 21500,
+    "description": "SCR353 series submerged type solenoid valve, 3.5\" immersion-type for larger manifold applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "SCR353A235",
+      "series": "SCR353",
+      "type": "Submerged Type",
+      "portSize": "3.5\"",
+      "connectionType": "Submerged",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -10,
+        "max": 70,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "Over 1 million cycles",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Large submerged pulse valve (3.5\") for high capacity manifold boxes.",
+      "features": [
+        "Large port",
+        "High throughput",
+        "Manifold-friendly",
+        "Industrial grade"
+      ],
+      "applications": [
+        "Large dust collectors",
+        "Industrial filtration",
+        "High capacity systems"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451fb",
+    "name": "Mecair Dust-300 3/4\"",
+    "slug": "mecair-dust-300-3-4-diaphragm-valve",
+    "categoryId": "699aa7fb6e76ee00284451ef",
+    "price": 15000,
+    "description": "Mecair Series 300 diaphragm valve, 3/4\" port size, designed for dust collector applications with reverse pulse jet filter cleaning.",
+    "category": "Diaphragm Valves",
+    "subcategory": "MECAIR Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valve-placeholder-mecair-1.svg"
+    ],
+    "specifications": {
+      "model": "Dust-300-3/4",
+      "series": "SCG353",
+      "type": "Solenoid Valve",
+      "portSize": "3/4\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -5,
+        "max": 80,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "1 million+",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Mecair Series 300 diaphragm valve for dust collector reverse pulse jet filter cleaning."
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451fc",
+    "name": "Mecair Dust-300 1\"",
+    "slug": "mecair-dust-300-1-diaphragm-valve",
+    "categoryId": "699aa7fb6e76ee00284451ef",
+    "price": 16500,
+    "description": "Mecair Series 300 diaphragm valve, 1\" port size for medium capacity dust collection systems.",
+    "category": "Diaphragm Valves",
+    "subcategory": "MECAIR Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valve-placeholder-mecair-2.svg"
+    ],
+    "specifications": {
+      "model": "Dust-300-1",
+      "series": "SCG353",
+      "type": "Solenoid Valve",
+      "portSize": "1\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -5,
+        "max": 80,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "1 million+",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "Mecair Series 300 diaphragm valve with 1\" port size for medium flow dust collector systems."
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451fd",
+    "name": "Mecair Dust-300 1.5\"",
+    "slug": "mecair-dust-300-1-5-diaphragm-valve",
+    "categoryId": "699aa7fb6e76ee00284451ef",
+    "price": 18500,
+    "description": "Mecair Series 300 diaphragm valve, 1.5\" port size for high capacity dust collection systems.",
+    "category": "Diaphragm Valves",
+    "subcategory": "MECAIR Type",
+    "stockStatus": "Low Stock",
+    "images": [
+      "/valve-placeholder-mecair-3.svg"
+    ],
+    "specifications": {
+      "model": "Dust-300-1.5",
+      "series": "SCG353",
+      "type": "Solenoid Valve",
+      "portSize": "1.5\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -5,
+        "max": 80,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "1 million+",
+      "certifications": [
+        "CE",
+        "ISO9001"
+      ],
+      "description": "High capacity Mecair Series 300 diaphragm valve for large dust collection installations."
+    },
+    "stock": 5,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451fe",
+    "name": "BEOT Standard 1/8\"",
+    "slug": "beot-standard-1-8-solenoid-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 8500,
+    "description": "BEOT standard solenoid valve, 1/8\" port size. Compact design for small automation applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valve-placeholder-beot-1.svg"
+    ],
+    "specifications": {
+      "model": "BEOT-1/8-STD",
+      "series": "SCG353",
+      "type": "Solenoid Valve",
+      "portSize": "1/8\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -5,
+        "max": 80,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "1 million+",
+      "certifications": [
+        "CE"
+      ],
+      "description": "BEOT standard series with small 1/8\" port size."
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee00284451ff",
+    "name": "BEOT Standard 1/4\"",
+    "slug": "beot-standard-1-4-solenoid-valve",
+    "categoryId": "699aa7fb6e76ee00284451e9",
+    "price": 9500,
+    "description": "BEOT standard solenoid valve, 1/4\" port size. Suitable for medium flow applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "ASCO Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valve-placeholder-beot-2.svg"
+    ],
+    "specifications": {
+      "model": "BEOT-1/4-STD",
+      "series": "SCG353",
+      "type": "Solenoid Valve",
+      "portSize": "1/4\"",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ],
+      "diaphragmMaterial": "NBR",
+      "temperatureRange": {
+        "min": -5,
+        "max": 80,
+        "unit": "Â°C"
+      },
+      "diaphragmLifeCycles": "1 million+",
+      "certifications": [
+        "CE"
+      ],
+      "description": "BEOT standard series with medium 1/4\" port size."
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445200",
+    "name": "TMF-Z-20",
+    "slug": "tmf-z-20-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 20933,
+    "description": "High-quality TMF-Z-20 for industrial applications. This Solenoid Valves product is built to meet international standards and ensure reliable performance in demanding environments.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "57 in stock",
+    "images": [
+      "/valves-1.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-20",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "20mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 57,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445201",
+    "name": "TMF-Z-25",
+    "slug": "tmf-z-25-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 22933,
+    "description": "TMF-Z-25 solenoid valve with 25mm port size. Enhanced version for higher flow applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-1.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-25",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "25mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445202",
+    "name": "TMF-Z-40S",
+    "slug": "tmf-z-40s-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 26933,
+    "description": "TMF-Z-40S solenoid valve with 40mm port size. Specialized version for industrial applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-2.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-40S",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "40mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445203",
+    "name": "TMF-Z-50S",
+    "slug": "tmf-z-50s-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 29933,
+    "description": "TMF-Z-50S solenoid valve with 50mm port size. High capacity valve for heavy duty applications.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-50S",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "50mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445204",
+    "name": "TMF-Z-62S",
+    "slug": "tmf-z-62s-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 32933,
+    "description": "TMF-Z-62S solenoid valve with 62mm port size for high throughput dust collection systems.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-62S",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "62mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445205",
+    "name": "TMF-Z-76S",
+    "slug": "tmf-z-76s-goyen-valve",
+    "categoryId": "699aa7fb6e76ee00284451ea",
+    "price": 35933,
+    "description": "TMF-Z-76S solenoid valve with 76mm port size. Maximum capacity valve for large industrial systems.",
+    "category": "Solenoid Valves",
+    "subcategory": "GOYEN Type",
+    "stockStatus": "In Stock",
+    "images": [
+      "/valves-3.png"
+    ],
+    "specifications": {
+      "model": "TMF-Z-76S",
+      "series": "GOYEN",
+      "type": "Solenoid Valve",
+      "portSize": "76mm",
+      "connectionType": "Threaded (G/NPT)",
+      "workingPressure": {
+        "mpa": [
+          0.3,
+          0.8
+        ],
+        "psi": [
+          43.5,
+          116
+        ]
+      },
+      "voltageOptions": [
+        "AC110V",
+        "AC220V",
+        "DC24V"
+      ]
+    },
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445206",
+    "name": "Sequential Timer Controller",
+    "slug": "sequential-timer-controller",
+    "categoryId": "699aa7fb6e76ee00284451e2",
+    "price": 18900,
+    "description": "Advanced sequential timer controller for industrial automation with multiple channel control.",
+    "category": "Controllers",
+    "subcategory": "Sequential Timer Controllers",
+    "stockStatus": "In Stock",
+    "images": [
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
+    ],
+    "specifications": null,
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445207",
+    "name": "PLC Based Controller",
+    "slug": "plc-based-controller",
+    "categoryId": "699aa7fb6e76ee00284451e3",
+    "price": 32500,
+    "description": "Programmable Logic Controller based industrial automation system.",
+    "category": "Controllers",
+    "subcategory": "PLC Based Controllers",
+    "stockStatus": "In Stock",
+    "images": [
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80"
+    ],
+    "specifications": null,
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445208",
+    "name": "Control Board for Dust Collector",
+    "slug": "control-board-dust-collector",
+    "categoryId": "699aa7fb6e76ee00284451de",
+    "price": 8500,
+    "description": "Main control board for industrial dust collection systems.",
+    "category": "Electronics",
+    "subcategory": "Control Boards",
+    "stockStatus": "In Stock",
+    "images": [
+      "https://images.unsplash.com/photo-1555664424-778a6902201b?auto=format&fit=crop&q=80"
+    ],
+    "specifications": null,
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee0028445209",
+    "name": "Industrial Power Supply 24V DC",
+    "slug": "industrial-power-supply-24v-dc",
+    "categoryId": "699aa7fb6e76ee00284451df",
+    "price": 4200,
+    "description": "24V DC industrial power supply for automation equipment.",
+    "category": "Electronics",
+    "subcategory": "Power Supplies",
+    "stockStatus": "In Stock",
+    "images": [
+      "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&q=80"
+    ],
+    "specifications": null,
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.476Z",
+    "updatedAt": "2026-02-22T06:53:47.476Z"
+  },
+  {
+    "_id": "699aa7fb6e76ee002844520a",
+    "name": "Differential Pressure Sensor",
+    "slug": "differential-pressure-sensor",
+    "categoryId": "699aa7fb6e76ee00284451e0",
+    "price": 12500,
+    "description": "High accuracy differential pressure sensor for industrial applications.",
+    "category": "Sensors",
+    "subcategory": "Pressure Sensors",
+    "stockStatus": "In Stock",
+    "images": [
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80"
+    ],
+    "specifications": null,
+    "stock": 50,
+    "status": "active",
+    "__v": 0,
+    "createdAt": "2026-02-22T06:53:47.477Z",
+    "updatedAt": "2026-02-22T06:53:47.477Z"
+  }
+]

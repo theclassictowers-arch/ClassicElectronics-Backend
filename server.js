@@ -1,0 +1,98 @@
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import connectDB from './config/db.js';
+import fs from 'fs';
+import authRoutes from './config/routes/authRoutes.js';
+import categoryRoutes from './config/routes/categoryRoutes.js';
+import productRoutes from './config/routes/productRoutes.js';
+import themeRoutes from './config/routes/themeRoutes.js';
+import orderRoutes from './config/routes/orderRoutes.js';
+import uploadRoutes from './config/routes/uploadRoutes.js';
+import sliderRoutes from './config/routes/sliderRoutes.js';
+import pageRoutes from './config/routes/pageRoutes.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load environment variables
+dotenv.config();
+
+const app = express();
+
+// Middleware
+app.use(cors({
+  origin: true, // Frontend origin ko allow karne ke liye
+  credentials: true
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Ensure essential directories exist
+const uploadPaths = ['uploads', 'uploads/products', 'uploads/profiles', 'uploads/pdfs'];
+uploadPaths.forEach(path => {
+  if (!fs.existsSync(path)) fs.mkdirSync(path, { recursive: true });
+});
+
+// Serve uploaded files statically
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Health check route
+app.get('/api/health', (req, res) => {
+  const state = mongoose.connection.readyState; // 0=disconnected, 1=connected
+  res.json({
+    status: state === 1 ? 'ok' : 'disconnected',
+    db: mongoose.connection.name,
+    uptime: process.uptime(),
+    timestamp: new Date(),
+  });
+});
+
+// Routes
+// Auth routes for both admin and users
+app.use(['/api/auth', '/api'], authRoutes);
+
+app.use('/api/categories', categoryRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/theme', themeRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
+app.use('/api/sliders', sliderRoutes);
+app.use('/api/pages', pageRoutes);
+
+// Handle 404 for undefined API routes (Strict prefix match)
+app.use('/api', (req, res, next) => {
+  res.status(404).json({ message: `Route ${req.originalUrl} not found` });
+});
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Classic Electroinc API is running...');
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: err.message,
+    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+  });
+});
+
+const PORT = process.env.PORT || 5001;
+
+// Connect to database then start server
+const startServer = async () => {
+  try {
+    await connectDB();
+    app.listen(PORT, () => console.log(` Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`));
+  } catch (error) {
+    console.error('Error connecting to database:', error);
+    process.exit(1);
+  }
+};
+
+startServer();
