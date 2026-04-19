@@ -56,10 +56,11 @@ app.use('/uploads', (req, res, next) => {
   setHeaders: (res, filePath) => {
     // Caching allow karein taake performance achi ho
     res.set('Cache-Control', 'public, max-age=86400'); 
-    // PDF file handling for correct download extension
-    if (filePath.toLowerCase().endsWith('.pdf')) {
+    // PDF file handling to prevent .htm download issues
+    const ext = path.extname(filePath).toLowerCase();
+    if (ext === '.pdf') {
       res.set('Content-Type', 'application/pdf');
-      res.set('Content-Disposition', 'inline');
+      res.set('Content-Disposition', `attachment; filename="${path.basename(filePath)}"`);
     }
   }
 }));
