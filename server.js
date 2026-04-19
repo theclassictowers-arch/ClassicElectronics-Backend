@@ -45,18 +45,18 @@ uploadPaths.forEach((dirPath) => {
 
 // Serve uploaded files statically with CORS headers
 app.use('/uploads', (req, res, next) => {
-  // Credentials true hone ki wajah se '*' allow nahi hota, origin confirm karna parta hai
-  const origin = req.headers.origin;
-  if (origin) {
-    res.set('Access-Control-Allow-Origin', origin);
-  }
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.set('Access-Control-Allow-Credentials', 'true');
+  // Modern browsers mein images ko cross-origin load karne ke liye zaroori h
   res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+  res.set('Access-Control-Allow-Origin', req.headers.origin || '*');
   next();
 }, express.static(uploadsRoot, {
-  setHeaders: (res) => {
+  setHeaders: (res, filePath) => {
     res.set('Cache-Control', 'public, max-age=86400');
+    // PDF file handling for correct download extension
+    if (filePath.toLowerCase().endsWith('.pdf')) {
+      res.set('Content-Type', 'application/pdf');
+      res.set('Content-Disposition', 'inline');
+    }
   }
 }));
 
