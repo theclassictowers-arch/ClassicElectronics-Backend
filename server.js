@@ -22,6 +22,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
+const uploadsRoot = path.join(__dirname, 'uploads');
 
 // Middleware
 app.use(cors({
@@ -32,13 +33,22 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Ensure essential directories exist
-const uploadPaths = ['uploads', 'uploads/products', 'uploads/profiles', 'uploads/pdfs'];
-uploadPaths.forEach(path => {
-  if (!fs.existsSync(path)) fs.mkdirSync(path, { recursive: true });
+const uploadPaths = [
+  uploadsRoot,
+  path.join(uploadsRoot, 'products'),
+  path.join(uploadsRoot, 'profiles'),
+  path.join(uploadsRoot, 'pdfs'),
+];
+uploadPaths.forEach((dirPath) => {
+  if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
 });
 
-// Serve uploaded files statically
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// Serve uploaded files statically with CORS headers
+app.use('/uploads', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Cache-Control', 'public, max-age=86400');
+  next();
+}, express.static(uploadsRoot));
 
 // Health check route
 app.get('/api/health', (req, res) => {

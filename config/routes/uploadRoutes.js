@@ -15,12 +15,14 @@ router.post('/images', protectAdmin, (req, res) => {
         LIMIT_FILE_COUNT: 'Too many files. Maximum 10 files at once.',
         LIMIT_UNEXPECTED_FILE: 'Invalid file type. Only JPEG, PNG, WebP, SVG, and GIF are allowed.',
       };
+      console.error('Multer error:', err.code, err.message);
       return res.status(400).json({
         message: messages[err.code] || `Upload error: ${err.message}`,
       });
     }
 
     if (err) {
+      console.error('Image upload error:', err);
       return res.status(500).json({ message: 'Upload failed' });
     }
 
@@ -28,9 +30,21 @@ router.post('/images', protectAdmin, (req, res) => {
       return res.status(400).json({ message: 'No files uploaded' });
     }
 
-    const urls = req.files.map((file) => `/${file.path.replace(/\\/g, '/')}`);
+    // Create response with full URLs and file metadata
+    const uploadedFiles = req.files.map((file) => ({
+      url: `/${file.path.replace(/\\/g, '/')}`,
+      filename: file.filename,
+      originalName: file.originalname,
+      size: file.size,
+      mimetype: file.mimetype
+    }));
 
-    res.json({ urls });
+    console.log('Images uploaded successfully:', uploadedFiles.length, 'files');
+    res.json({ 
+      success: true,
+      urls: uploadedFiles.map(f => f.url),
+      files: uploadedFiles 
+    });
   });
 });
 
@@ -43,21 +57,27 @@ router.post('/pdf', protectAdmin, (req, res) => {
         LIMIT_FILE_SIZE: 'File too large. Maximum 10MB.',
         LIMIT_UNEXPECTED_FILE: 'Invalid file type. Only PDF files are allowed.',
       };
+      console.error('Multer error:', err.code, err.message);
       return res.status(400).json({
         message: messages[err.code] || `Upload error: ${err.message}`,
       });
     }
 
     if (err) {
-      return res.status(500).json({ message: 'PDF upload failed' });
+      console.error('PDF upload error:', err);
+      return res.status(500).json({ message: 'Failed to upload PDF. Please try again.' });
     }
 
     if (!req.file) {
       return res.status(400).json({ message: 'No PDF uploaded' });
     }
 
-    const url = `/${req.file.path.replace(/\\/g, '/')}`;
-    res.json({ url });
+    // Normalize path for both Windows and Unix systems
+    const normalizedPath = req.file.path.replace(/\\/g, '/');
+    const url = `/${normalizedPath}`;
+    
+    console.log('PDF uploaded successfully:', url);
+    res.json({ url, filename: req.file.filename, size: req.file.size });
   });
 });
 

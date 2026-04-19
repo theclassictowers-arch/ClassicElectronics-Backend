@@ -2,9 +2,13 @@ import multer from 'multer';
 import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 
-const uploadDir = 'uploads/products';
-const pdfUploadDir = 'uploads/pdfs';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const uploadsRoot = path.resolve(__dirname, '..', 'uploads');
+const uploadDir = path.join(uploadsRoot, 'products');
+const pdfUploadDir = path.join(uploadsRoot, 'pdfs');
 
 // Ensure upload directory exists
 if (!fs.existsSync(uploadDir)) {
@@ -26,10 +30,16 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml', 'image/gif'];
-  if (allowedTypes.includes(file.mimetype)) {
+  const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml', 'image/gif', 'image/jpg'];
+  const allowedExtensions = ['.jpg', '.jpeg', '.png', '.webp', '.svg', '.gif'];
+  
+  // Check MIME type or file extension as fallback
+  const ext = path.extname(file.originalname).toLowerCase();
+  
+  if (allowedTypes.includes(file.mimetype) || allowedExtensions.includes(ext)) {
     cb(null, true);
   } else {
+    console.error(`File rejected - MIME: ${file.mimetype}, Ext: ${ext}`);
     cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE', file.fieldname), false);
   }
 };
@@ -44,7 +54,7 @@ const upload = multer({
 });
 
 // Profile image upload config
-const profileUploadDir = 'uploads/profiles';
+const profileUploadDir = path.join(uploadsRoot, 'profiles');
 
 if (!fs.existsSync(profileUploadDir)) {
   fs.mkdirSync(profileUploadDir, { recursive: true });
@@ -80,7 +90,18 @@ const pdfStorage = multer.diskStorage({
 });
 
 const pdfFileFilter = (req, file, cb) => {
-  if (file.mimetype === 'application/pdf') {
+  // Accept multiple PDF MIME types as different clients send different types
+  const allowedPdfTypes = [
+    'application/pdf',
+    'application/x-pdf',
+    'application/x-bzpdf',
+    'application/x-gzpdf'
+  ];
+  
+  // Also check file extension as fallback
+  const ext = path.extname(file.originalname).toLowerCase();
+  
+  if (allowedPdfTypes.includes(file.mimetype) || ext === '.pdf') {
     cb(null, true);
   } else {
     cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE', file.fieldname), false);
