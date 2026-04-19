@@ -43,12 +43,13 @@ uploadPaths.forEach((dirPath) => {
   if (!fs.existsSync(dirPath)) fs.mkdirSync(dirPath, { recursive: true });
 });
 
-// Serve uploaded files statically with CORS headers
+
 app.use('/uploads', (req, res, next) => {
-  // Modern browsers mein images aur PDFs ko cross-origin load karne ke liye
+
+  console.log(`[Static File Request]: ${req.method} ${req.url}`);
   res.set('Cross-Origin-Resource-Policy', 'cross-origin');
   res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.set('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
   
   if (req.method === 'OPTIONS') {
     return res.sendStatus(200);
@@ -100,12 +101,12 @@ app.use('/api', (req, res, next) => {
   res.status(404).json({ message: `Route ${req.originalUrl} not found` });
 });
 
-// Root route
+
 app.get('/', (req, res) => {
   res.send('Classic Electroinc API is running...');
 });
 
-// Error handling middleware
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).json({
