@@ -75,7 +75,7 @@ router.post('/pdf', protectAdmin, (req, res) => {
     }
 
     // Use relative URL for frontend access
-    const url = `/uploads/pdfs/${req.file.filename}`.replace(/\\/g, '/');
+    const url = `/uploads/pdfs/${req.file.filename}`.replace(/\/+/g, '/');
     
     console.log('PDF uploaded successfully:', url);
     res.json({ url, filename: req.file.filename, size: req.file.size });

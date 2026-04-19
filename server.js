@@ -47,10 +47,11 @@ uploadPaths.forEach((dirPath) => {
 app.use('/uploads', (req, res, next) => {
   // Modern browsers mein images aur PDFs ko cross-origin load karne ke liye
   res.set('Cross-Origin-Resource-Policy', 'cross-origin');
+  res.set('Access-Control-Allow-Origin', '*');
   next();
-}, express.static(path.resolve(uploadsRoot), {
+}, express.static(uploadsRoot, {
   setHeaders: (res, filePath) => {
-    // Caching allow karein taake performance achi ho
+    res.set('Access-Control-Allow-Origin', '*');
     res.set('Cache-Control', 'public, max-age=86400'); 
     // PDF file handling to prevent .htm download issues
     const ext = path.extname(filePath).toLowerCase();
