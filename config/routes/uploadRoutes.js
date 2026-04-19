@@ -42,7 +42,7 @@ router.post('/images', protectAdmin, (req, res) => {
     console.log('Images uploaded successfully:', uploadedFiles.length, 'files');
     res.json({ 
       success: true,
-      url: uploadedFiles[0].url, // Dashboard preview ke liye single URL
+      url: uploadedFiles[0].url,
       urls: uploadedFiles.map(f => f.url),
       files: uploadedFiles 
     });
