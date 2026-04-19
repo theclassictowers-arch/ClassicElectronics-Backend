@@ -33,7 +33,7 @@ router.post('/images', protectAdmin, (req, res) => {
     // Create response with full URLs and file metadata
     const uploadedFiles = req.files.map((file) => ({
       // leading slash ensure karein aur double slashes remove karein
-      url: `/uploads/products/${file.filename}`.replace(/\/+/g, '/'),
+      url: `/uploads/products/${file.filename}`.replace(/\\/g, '/').replace(/\/+/g, '/'),
       filename: file.filename,
       originalName: file.originalname,
       size: file.size,

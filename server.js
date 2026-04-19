@@ -22,7 +22,7 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 const app = express();
-const uploadsRoot = path.join(__dirname, 'uploads');
+const uploadsRoot = path.resolve(__dirname, 'uploads');
 
 // Middleware
 app.use(cors({
@@ -48,10 +48,17 @@ app.use('/uploads', (req, res, next) => {
   // Modern browsers mein images aur PDFs ko cross-origin load karne ke liye
   res.set('Cross-Origin-Resource-Policy', 'cross-origin');
   res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
   next();
 }, express.static(uploadsRoot, {
+  fallthrough: true,
   setHeaders: (res, filePath) => {
     res.set('Access-Control-Allow-Origin', '*');
+    res.set('Cross-Origin-Resource-Policy', 'cross-origin');
     res.set('Cache-Control', 'public, max-age=86400'); 
     // PDF file handling to prevent .htm download issues
     const ext = path.extname(filePath).toLowerCase();
