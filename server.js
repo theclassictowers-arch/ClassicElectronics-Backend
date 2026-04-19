@@ -47,12 +47,8 @@ uploadPaths.forEach((dirPath) => {
 app.use('/uploads', (req, res, next) => {
   // Modern browsers mein images aur PDFs ko cross-origin load karne ke liye
   res.set('Cross-Origin-Resource-Policy', 'cross-origin');
-  // Agar frontend credentials use kar raha hai to origin dynamic hona chahiye
-  res.set('Access-Control-Allow-Origin', req.headers.origin || '*');
-  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.set('Access-Control-Allow-Credentials', 'true');
   next();
-}, express.static(uploadsRoot, {
+}, express.static(path.resolve(uploadsRoot), {
   setHeaders: (res, filePath) => {
     // Caching allow karein taake performance achi ho
     res.set('Cache-Control', 'public, max-age=86400'); 
@@ -60,7 +56,8 @@ app.use('/uploads', (req, res, next) => {
     const ext = path.extname(filePath).toLowerCase();
     if (ext === '.pdf') {
       res.set('Content-Type', 'application/pdf');
-      res.set('Content-Disposition', `attachment; filename="${path.basename(filePath)}"`);
+      // 'inline' use karein taake browser mein open ho, 'attachment' download karwa deta hai
+      res.set('Content-Disposition', 'inline');
     }
   }
 }));
@@ -78,15 +75,17 @@ app.get('/api/health', (req, res) => {
 
 // Routes
 // Auth routes for both admin and users
-app.use(['/api/auth', '/api'], authRoutes);
+// Direct routes for admin/login support
+app.use('/', authRoutes);
+app.use('/api', authRoutes);
 
-app.use('/api/categories', categoryRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/theme', themeRoutes);
-app.use('/api/orders', orderRoutes);
-app.use('/api/upload', uploadRoutes);
-app.use('/api/sliders', sliderRoutes);
-app.use('/api/pages', pageRoutes);
+app.use(['/api/categories', '/categories'], categoryRoutes);
+app.use(['/api/products', '/products'], productRoutes);
+app.use(['/api/theme', '/theme'], themeRoutes);
+app.use(['/api/orders', '/orders'], orderRoutes);
+app.use(['/api/upload', '/upload'], uploadRoutes);
+app.use(['/api/sliders', '/sliders'], sliderRoutes);
+app.use(['/api/pages', '/pages'], pageRoutes);
 
 // Handle 404 for undefined API routes (Strict prefix match)
 app.use('/api', (req, res, next) => {

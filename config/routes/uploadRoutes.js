@@ -32,7 +32,8 @@ router.post('/images', protectAdmin, (req, res) => {
 
     // Create response with full URLs and file metadata
     const uploadedFiles = req.files.map((file) => ({
-      url: `/uploads/products/${file.filename}`.replace(/\\/g, '/'),
+      // leading slash ensure karein aur double slashes remove karein
+      url: `/uploads/products/${file.filename}`.replace(/\/+/g, '/'),
       filename: file.filename,
       originalName: file.originalname,
       size: file.size,
@@ -55,7 +56,7 @@ router.post('/pdf', protectAdmin, (req, res) => {
   uploadMiddleware(req, res, (err) => {
     if (err instanceof multer.MulterError) {
       const messages = {
-        LIMIT_FILE_SIZE: 'File too large. Maximum 10MB.',
+        LIMIT_FILE_SIZE: 'File too large. Maximum 25MB.',
         LIMIT_UNEXPECTED_FILE: 'Invalid file type. Only PDF files are allowed.',
       };
       console.error('Multer error:', err.code, err.message);
