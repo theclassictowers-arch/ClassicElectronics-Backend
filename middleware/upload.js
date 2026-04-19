@@ -9,15 +9,15 @@ const __dirname = path.dirname(__filename);
 const uploadsRoot = path.resolve(__dirname, '..', 'uploads');
 const uploadDir = path.join(uploadsRoot, 'products');
 const pdfUploadDir = path.join(uploadsRoot, 'pdfs');
+const profileUploadDir = path.join(uploadsRoot, 'profiles');
 
 // Ensure upload directory exists
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-if (!fs.existsSync(pdfUploadDir)) {
-  fs.mkdirSync(pdfUploadDir, { recursive: true });
-}
+const dirs = [uploadDir, pdfUploadDir, profileUploadDir];
+dirs.forEach(dir => {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+});
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -52,13 +52,6 @@ const upload = multer({
     files: 10, // max 10 files at once
   },
 });
-
-// Profile image upload config
-const profileUploadDir = path.join(uploadsRoot, 'profiles');
-
-if (!fs.existsSync(profileUploadDir)) {
-  fs.mkdirSync(profileUploadDir, { recursive: true });
-}
 
 const profileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -104,6 +97,7 @@ const pdfFileFilter = (req, file, cb) => {
   if (allowedPdfTypes.includes(file.mimetype) || ext === '.pdf') {
     cb(null, true);
   } else {
+    console.error(`PDF rejected - MIME: ${file.mimetype}, Ext: ${ext}`);
     cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE', file.fieldname), false);
   }
 };
@@ -112,7 +106,7 @@ export const pdfUpload = multer({
   storage: pdfStorage,
   fileFilter: pdfFileFilter,
   limits: {
-    fileSize: 10 * 1024 * 1024,
+    fileSize: 25 * 1024 * 1024, // 25MB tak allow karein
     files: 1,
   },
 });

@@ -32,7 +32,7 @@ router.post('/images', protectAdmin, (req, res) => {
 
     // Create response with full URLs and file metadata
     const uploadedFiles = req.files.map((file) => ({
-      url: `/${file.path.replace(/\\/g, '/')}`,
+      url: `/uploads/products/${file.filename}`.replace(/\\/g, '/'),
       filename: file.filename,
       originalName: file.originalname,
       size: file.size,
@@ -42,6 +42,7 @@ router.post('/images', protectAdmin, (req, res) => {
     console.log('Images uploaded successfully:', uploadedFiles.length, 'files');
     res.json({ 
       success: true,
+      url: uploadedFiles[0].url, // Dashboard preview ke liye single URL
       urls: uploadedFiles.map(f => f.url),
       files: uploadedFiles 
     });
@@ -72,9 +73,8 @@ router.post('/pdf', protectAdmin, (req, res) => {
       return res.status(400).json({ message: 'No PDF uploaded' });
     }
 
-    // Normalize path for both Windows and Unix systems
-    const normalizedPath = req.file.path.replace(/\\/g, '/');
-    const url = `/${normalizedPath}`;
+    // Use relative URL for frontend access
+    const url = `/uploads/pdfs/${req.file.filename}`.replace(/\\/g, '/');
     
     console.log('PDF uploaded successfully:', url);
     res.json({ url, filename: req.file.filename, size: req.file.size });

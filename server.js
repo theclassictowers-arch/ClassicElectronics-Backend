@@ -29,8 +29,8 @@ app.use(cors({
   origin: true, // Frontend origin ko allow karne ke liye
   credentials: true
 }));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: '60mb' }));
+app.use(express.urlencoded({ limit: '60mb', extended: true }));
 
 // Ensure essential directories exist
 const uploadPaths = [
@@ -45,10 +45,20 @@ uploadPaths.forEach((dirPath) => {
 
 // Serve uploaded files statically with CORS headers
 app.use('/uploads', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Cache-Control', 'public, max-age=86400');
+  // Credentials true hone ki wajah se '*' allow nahi hota, origin confirm karna parta hai
+  const origin = req.headers.origin;
+  if (origin) {
+    res.set('Access-Control-Allow-Origin', origin);
+  }
+  res.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.set('Access-Control-Allow-Credentials', 'true');
+  res.set('Cross-Origin-Resource-Policy', 'cross-origin');
   next();
-}, express.static(uploadsRoot));
+}, express.static(uploadsRoot, {
+  setHeaders: (res) => {
+    res.set('Cache-Control', 'public, max-age=86400');
+  }
+}));
 
 // Health check route
 app.get('/api/health', (req, res) => {
