@@ -93,7 +93,7 @@ export const getNavbarData = async (req, res) => {
     // Fetch products belonging to leaf categories
     const products = leafIds.length
       ? await Product.find({ status: 'active', categoryId: { $in: leafIds } })
-          .select('_id name slug categoryId')
+          .select('_id name slug categoryId code specifications')
           .sort({ name: 1 })
           .lean()
       : [];
@@ -102,7 +102,9 @@ export const getNavbarData = async (req, res) => {
     products.forEach((p) => {
       const key = String(p.categoryId);
       const list = productsByCategory.get(key) ?? [];
-      list.push({ _id: p._id, name: p.name, slug: p.slug });
+      // specifications.model ko check karein, agar na ho toh code field check karein
+      const modelCode = p.specifications?.model || p.code || "";
+      list.push({ _id: p._id, name: p.name, slug: p.slug, code: modelCode });
       productsByCategory.set(key, list);
     });
 

@@ -52,6 +52,8 @@ export const getProducts = async (req, res) => {
       const term = q.trim();
       query.$or = [
         { name: { $regex: term, $options: 'i' } },
+        { code: { $regex: term, $options: 'i' } },
+        { 'specifications.model': { $regex: term, $options: 'i' } },
         { description: { $regex: term, $options: 'i' } },
         { slug: { $regex: term, $options: 'i' } },
       ];
@@ -95,9 +97,7 @@ export const getProducts = async (req, res) => {
   }
 };
 
-// @desc    Get all products (Admin version with pagination and search)
-// @route   GET /api/products/admin
-// @access  Private (Admin)
+
 export const getAdminProducts = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -109,6 +109,8 @@ export const getAdminProducts = async (req, res) => {
     if (search) {
       query.$or = [
         { name: { $regex: search, $options: 'i' } },
+        { code: { $regex: search, $options: 'i' } },
+        { 'specifications.model': { $regex: search, $options: 'i' } },
         { slug: { $regex: search, $options: 'i' } },
       ];
     }
@@ -179,6 +181,7 @@ export const getProduct = async (req, res) => {
 export const createProduct = async (req, res) => {
   const {
     name,
+    code,
     categoryId,
     price,
     description,
@@ -211,6 +214,7 @@ export const createProduct = async (req, res) => {
 
     const product = await Product.create({
       name,
+      code: typeof code === 'string' ? code : undefined,
       slug: finalSlug,
       categoryId,
       price,

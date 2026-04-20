@@ -727,6 +727,7 @@ const seedData = async () => {
 
       return {
         ...p,
+        code: p.name, // Name ko hi product code ke taur par istemal kar rahe hain
         categoryId: catMap[categorySlug],
         stock: parseStockFromStatus(p.stockStatus),
         images: normalizeImages(p.images),
