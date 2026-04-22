@@ -79,7 +79,7 @@ export const getProducts = async (req, res) => {
 
     let mongooseQuery = Product.find(query)
       .populate('categoryId', 'name slug parent level')
-      .sort({ createdAt: -1 });
+      .sort({ sortOrder: 1, createdAt: -1 });
 
     const wantsSpecs = includeSpecs === '1' || includeSpecs === 'true' || includeSpecs === true;
     if (!wantsSpecs) {
@@ -118,7 +118,7 @@ export const getAdminProducts = async (req, res) => {
     const total = await Product.countDocuments(query);
     const products = await Product.find(query)
       .populate('categoryId', 'name slug')
-      .sort({ createdAt: -1 })
+      .sort({ sortOrder: 1, createdAt: -1 })
       .skip(skip)
       .limit(limit)
       .lean();
@@ -235,6 +235,33 @@ export const createProduct = async (req, res) => {
       return res.status(400).json({ message: 'Slug already exists' });
     }
     res.status(400).json({ message: error.message });
+  }
+};
+
+// @desc    Reorder products
+// @route   PUT /api/products/reorder
+// @access  Private (Admin)
+export const reorderProducts = async (req, res) => {
+  try {
+    const { orderedIds } = req.body;
+
+    if (!Array.isArray(orderedIds)) {
+      return res.status(400).json({ message: 'orderedIds array is required' });
+    }
+
+    // Bulk update using index as sortOrder
+    const bulkOps = orderedIds.map((id, index) => ({
+      updateOne: {
+        filter: { _id: id },
+        update: { $set: { sortOrder: index } },
+      },
+    }));
+
+    await Product.bulkWrite(bulkOps);
+
+    res.status(200).json({ message: 'Products reordered successfully' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 

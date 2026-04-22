@@ -94,7 +94,7 @@ export const getNavbarData = async (req, res) => {
     const products = leafIds.length
       ? await Product.find({ status: 'active', categoryId: { $in: leafIds } })
           .select('_id name slug categoryId code specifications')
-          .sort({ name: 1 })
+          .sort({ sortOrder: 1, createdAt: -1 })
           .lean()
       : [];
 
@@ -141,7 +141,8 @@ export const getNavbarData = async (req, res) => {
 export const getAdminCategories = async (req, res) => {
   try {
     const categories = await Category.find({})
-      .sort({ level: 1, order: 1, name: 1 })
+      .populate('parent', 'name')
+      .sort({ level: 1, order: 1, name: 1, createdAt: -1 })
       .lean();
     res.status(200).json(categories);
   } catch (error) {
@@ -165,8 +166,10 @@ export const createCategory = async (req, res) => {
       slug,
     };
 
-    if (typeof parent === 'string' && parent.trim()) {
+    if (typeof parent === 'string' && parent.trim() && parent !== 'null') {
       payload.parent = parent.trim();
+    } else {
+      payload.parent = null;
     }
 
     const parsedLevel = Number(level);
@@ -188,8 +191,9 @@ export const createCategory = async (req, res) => {
     }
 
     const category = await Category.create(payload);
+    const populated = await Category.findById(category._id).populate('parent', 'name');
 
-    res.status(201).json(category);
+    res.status(201).json(populated);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -206,11 +210,16 @@ export const updateCategory = async (req, res) => {
       return res.status(404).json({ message: 'Category not found' });
     }
 
+    // Frontend se agar khali string ya 'null' aaye toh parent ko null set karein
+    if (req.body.parent === '' || req.body.parent === 'null') {
+      req.body.parent = null;
+    }
+
     const updatedCategory = await Category.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
-    );
+      { new: true, runValidators: true }
+    ).populate('parent', 'name');
 
     res.status(200).json(updatedCategory);
   } catch (error) {

@@ -74,6 +74,10 @@ const ProductSchema = new mongoose.Schema({
   showPrice: {
     type: Boolean,
     default: false
+  },
+  sortOrder: {
+    type: Number,
+    default: 0
   }
 }, { timestamps: true });
 

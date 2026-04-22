@@ -43,7 +43,10 @@ export const createOrder = async (req, res) => {
       status: 'pending',
     });
 
-    res.status(201).json(order);
+    res.status(201).json({
+      message: 'Order placed successfully',
+      order,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -81,9 +84,11 @@ export const updateOrderStatus = async (req, res) => {
     order.status = status;
     await order.save();
 
-    res.status(200).json(order);
+    res.status(200).json({
+      message: 'Order updated successfully',
+      order,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-
