@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
@@ -14,6 +14,7 @@ import orderRoutes from './config/routes/orderRoutes.js';
 import uploadRoutes from './config/routes/uploadRoutes.js';
 import sliderRoutes from './config/routes/sliderRoutes.js';
 import pageRoutes from './config/routes/pageRoutes.js';
+import salesDocumentRoutes from './config/routes/salesDocumentRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -95,6 +96,7 @@ app.use(['/api/orders', '/orders'], orderRoutes);
 app.use(['/api/upload', '/upload'], uploadRoutes);
 app.use(['/api/sliders', '/sliders'], sliderRoutes);
 app.use(['/api/pages', '/pages'], pageRoutes);
+app.use(['/api/sales-documents', '/sales-documents'], salesDocumentRoutes);
 
 // Handle 404 for undefined API routes (Strict prefix match)
 app.use('/api', (req, res, next) => {
@@ -129,3 +131,4 @@ const startServer = async () => {
 };
 
 startServer();
+

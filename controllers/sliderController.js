@@ -1,4 +1,4 @@
-import Slider from '../models/Slider.js';
+﻿import Slider from '../models/Slider.js';
 
 // @desc    Get all sliders
 // @route   GET /api/sliders
@@ -31,7 +31,7 @@ export const getSlider = async (req, res) => {
 // @route   POST /api/sliders
 // @access  Private (Admin)
 export const createSlider = async (req, res) => {
-  const { title, subtitle, highlight, bgImage, link, order, isActive } = req.body;
+  const { badge, title, subtitle, highlight, bgImage, primaryButtonText, link, secondaryButtonText, secondaryLink, order, isActive } = req.body;
 
   if (!title || !subtitle || !highlight || !bgImage || !link) {
     return res.status(400).json({ message: 'Please add all required fields (title, subtitle, highlight, bgImage, link)' });
@@ -46,11 +46,15 @@ export const createSlider = async (req, res) => {
     }
 
     const slider = await Slider.create({
+      badge,
       title,
       subtitle,
       highlight,
       bgImage,
+      primaryButtonText,
       link,
+      secondaryButtonText,
+      secondaryLink,
       order: finalOrder,
       isActive: isActive !== undefined ? isActive : true,
     });
@@ -126,3 +130,4 @@ export const reorderSliders = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+

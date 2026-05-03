@@ -1,6 +1,11 @@
-import mongoose from 'mongoose';
+﻿import mongoose from 'mongoose';
 
 const SliderSchema = new mongoose.Schema({
+  badge: {
+    type: String,
+    trim: true,
+    default: 'Premium Industrial Components'
+  },
   title: {
     type: String,
     required: true,
@@ -21,10 +26,25 @@ const SliderSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  primaryButtonText: {
+    type: String,
+    trim: true,
+    default: 'Explore Products'
+  },
   link: {
     type: String,
     required: true,
     trim: true
+  },
+  secondaryButtonText: {
+    type: String,
+    trim: true,
+    default: 'Contact Sales'
+  },
+  secondaryLink: {
+    type: String,
+    trim: true,
+    default: '/clientSide/contact'
   },
   order: {
     type: Number,
@@ -37,3 +57,4 @@ const SliderSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 export default mongoose.model('Slider', SliderSchema);
+
