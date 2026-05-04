@@ -1,6 +1,51 @@
 ﻿import SalesDocument from '../models/SalesDocument.js';
 
 const allowedDocumentTypes = ['quotation', 'invoice', 'deliveryChallan'];
+const autoIncrementFormFieldsByType = {
+  quotation: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
+  invoice: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
+  deliveryChallan: ['invoiceNo', 'purchaseOrder', 'gst'],
+};
+
+const getNextSequenceValue = (value) => {
+  const textValue = String(value || '').trim();
+  if (!textValue) return '';
+
+  const matches = [...textValue.matchAll(/\d+/g)];
+  const lastMatch = matches[matches.length - 1];
+  if (!lastMatch) return textValue;
+
+  const numericText = lastMatch[0];
+  const nextNumber = String(Number(numericText) + 1).padStart(numericText.length, '0');
+  const startIndex = lastMatch.index;
+
+  return `${textValue.slice(0, startIndex)}${nextNumber}${textValue.slice(startIndex + numericText.length)}`;
+};
+
+const buildNextFormValues = async (documentType, form) => {
+  const nextForm = { ...form };
+  const latestDocument = await SalesDocument.findOne({ documentType })
+    .sort({ createdAt: -1, _id: -1 })
+    .select('form')
+    .lean();
+
+  if (!latestDocument?.form || typeof latestDocument.form !== 'object') {
+    return nextForm;
+  }
+
+  const autoIncrementFormFields = autoIncrementFormFieldsByType[documentType] || [];
+
+  autoIncrementFormFields.forEach((field) => {
+    const previousValue = latestDocument.form[field];
+    const nextValue = getNextSequenceValue(previousValue);
+
+    if (nextValue) {
+      nextForm[field] = nextValue;
+    }
+  });
+
+  return nextForm;
+};
 
 const buildDocumentPayload = (body, adminId) => {
   const { documentType, form = {}, items = [], totalAmount = 0 } = body;
@@ -59,7 +104,17 @@ export const createSalesDocument = async (req, res) => {
   }
 
   try {
-    const document = await SalesDocument.create(buildDocumentPayload(req.body, req.admin?._id));
+    const formWithNextNumbers = await buildNextFormValues(documentType, form);
+    const document = await SalesDocument.create(
+      buildDocumentPayload(
+        {
+          ...req.body,
+          form: formWithNextNumbers,
+        },
+        req.admin?._id
+      )
+    );
+
     res.status(201).json(document);
   } catch (error) {
     res.status(400).json({ message: error.message });
