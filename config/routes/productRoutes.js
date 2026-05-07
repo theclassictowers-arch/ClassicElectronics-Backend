@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   getProducts,
+  getAdminProducts,
   getProductBySlug,
   getProduct,
   reorderProducts,
@@ -13,6 +14,7 @@ import { protectAdmin } from '../../middleware/authMiddleware.js';
 const router = express.Router();
 
 router.get('/', getProducts);
+router.get('/admin', protectAdmin, getAdminProducts);
 router.get('/by-slug', getProductBySlug);
 router.get('/:id', getProduct);
 router.put('/reorder', protectAdmin, reorderProducts);

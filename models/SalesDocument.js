@@ -1,6 +1,6 @@
 ﻿import mongoose from 'mongoose';
 
-const DOCUMENT_TYPES = ['quotation', 'invoice', 'deliveryChallan'];
+const DOCUMENT_TYPES = ['quotation', 'invoice', 'deliveryChallan', 'bill'];
 
 const DocumentItemSchema = new mongoose.Schema({
   categoryId: { type: String, trim: true, default: '' },

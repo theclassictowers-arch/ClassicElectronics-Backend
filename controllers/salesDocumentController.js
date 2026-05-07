@@ -1,10 +1,11 @@
 ﻿import SalesDocument from '../models/SalesDocument.js';
 
-const allowedDocumentTypes = ['quotation', 'invoice', 'deliveryChallan'];
+const allowedDocumentTypes = ['quotation', 'invoice', 'deliveryChallan', 'bill'];
 const autoIncrementFormFieldsByType = {
   quotation: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
   invoice: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
   deliveryChallan: ['invoiceNo', 'purchaseOrder', 'gst'],
+  bill: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
 };
 
 const getNextSequenceValue = (value) => {
@@ -64,12 +65,37 @@ const buildDocumentPayload = (body, adminId) => {
 
 export const getSalesDocuments = async (req, res) => {
   try {
-    const { type } = req.query;
-    const filter = type ? { documentType: type } : {};
+    const { type, q, limit, sortBy, order } = req.query;
+    const filter = {};
+
+    if (type) {
+      if (!allowedDocumentTypes.includes(type)) {
+        return res.status(400).json({ message: 'Invalid document type' });
+      }
+      filter.documentType = type;
+    }
+
+    if (typeof q === 'string' && q.trim()) {
+      const searchTerm = q.trim();
+      filter.$or = [
+        { documentNo: { $regex: searchTerm, $options: 'i' } },
+        { customerName: { $regex: searchTerm, $options: 'i' } },
+        { date: { $regex: searchTerm, $options: 'i' } },
+        { 'form.purchaseOrder': { $regex: searchTerm, $options: 'i' } },
+        { 'form.quotationNo': { $regex: searchTerm, $options: 'i' } },
+      ];
+    }
+
+    const parsedLimit = Math.min(Math.max(parseInt(String(limit ?? '100'), 10) || 100, 1), 300);
+    const sortDirection = order === 'asc' ? 1 : -1;
+    const sortField =
+      ['documentNo', 'customerName', 'date', 'totalAmount', 'createdAt'].includes(sortBy)
+        ? sortBy
+        : 'createdAt';
 
     const documents = await SalesDocument.find(filter)
-      .sort({ createdAt: -1 })
-      .limit(100)
+      .sort({ [sortField]: sortDirection, _id: sortDirection })
+      .limit(parsedLimit)
       .lean();
 
     res.status(200).json(documents);
