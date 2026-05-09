@@ -1,5 +1,7 @@
 ﻿import SalesDocument from '../models/SalesDocument.js';
 
+import Customer from '../models/Customer.js';
+
 const allowedDocumentTypes = ['quotation', 'invoice', 'deliveryChallan', 'bill'];
 const autoIncrementFormFieldsByType = {
   quotation: ['invoiceNo', 'purchaseOrder', 'quotationNo'],
@@ -61,6 +63,35 @@ const buildDocumentPayload = (body, adminId) => {
     totalAmount: Number(totalAmount || 0),
     createdBy: adminId,
   };
+};
+
+const cleanString = (value) => (typeof value === 'string' ? value.trim() : '');
+
+const syncCustomerFromForm = async (form, adminId) => {
+  if (!form || typeof form !== 'object') return;
+
+  const name = cleanString(form.companyName);
+  const location = cleanString(form.location);
+  if (!name) return;
+
+  await Customer.findOneAndUpdate(
+    { normalizedName: name.toLowerCase(), normalizedLocation: location.toLowerCase() },
+    {
+      $set: {
+        name,
+        location,
+        gst: cleanString(form.gst),
+        ntn: cleanString(form.ntn),
+        email: cleanString(form.customerEmail ?? form.email),
+        phonePrimary: cleanString(form.customerPhone ?? form.phonePrimary),
+        phoneSecondary: cleanString(form.phoneSecondary),
+      },
+      $setOnInsert: {
+        createdBy: adminId,
+      },
+    },
+    { upsert: true, new: true, runValidators: true, setDefaultsOnInsert: true }
+  );
 };
 
 export const getSalesDocuments = async (req, res) => {
@@ -140,6 +171,7 @@ export const createSalesDocument = async (req, res) => {
         req.admin?._id
       )
     );
+    await syncCustomerFromForm(formWithNextNumbers, req.admin?._id);
 
     res.status(201).json(document);
   } catch (error) {
@@ -170,6 +202,7 @@ export const updateSalesDocument = async (req, res) => {
       buildDocumentPayload(req.body, document.createdBy || req.admin?._id),
       { new: true, runValidators: true }
     );
+    await syncCustomerFromForm(form, document.createdBy || req.admin?._id);
 
     res.status(200).json(updatedDocument);
   } catch (error) {

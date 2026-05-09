@@ -15,6 +15,8 @@ import uploadRoutes from './config/routes/uploadRoutes.js';
 import sliderRoutes from './config/routes/sliderRoutes.js';
 import pageRoutes from './config/routes/pageRoutes.js';
 import salesDocumentRoutes from './config/routes/salesDocumentRoutes.js';
+import customerRoutes from './config/routes/customerRoutes.js';
+import Customer from './models/Customer.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -97,6 +99,7 @@ app.use(['/api/upload', '/upload'], uploadRoutes);
 app.use(['/api/sliders', '/sliders'], sliderRoutes);
 app.use(['/api/pages', '/pages'], pageRoutes);
 app.use(['/api/sales-documents', '/sales-documents'], salesDocumentRoutes);
+app.use(['/api/customers', '/customers'], customerRoutes);
 
 // Handle 404 for undefined API routes (Strict prefix match)
 app.use('/api', (req, res, next) => {
@@ -123,6 +126,22 @@ const PORT = process.env.PORT || 5001;
 const startServer = async () => {
   try {
     await connectDB();
+    try {
+      await Customer.collection.dropIndex('normalizedName_1');
+    } catch (error) {
+      if (error?.codeName !== 'IndexNotFound' && error?.code !== 27) {
+        console.warn('Customer normalizedName index cleanup skipped:', error.message);
+      }
+    }
+    try {
+      await Customer.createIndexes();
+    } catch (error) {
+      if (error?.code === 11000 || error?.code === 85) {
+        console.warn('Customer compound index creation skipped because it already exists or duplicate customer/location pairs exist.');
+      } else {
+        throw error;
+      }
+    }
     app.listen(PORT, () => console.log(` Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`));
   } catch (error) {
     console.error('Error connecting to database:', error);
