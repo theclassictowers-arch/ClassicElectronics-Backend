@@ -79,12 +79,11 @@ const CustomerSchema = new mongoose.Schema(
 
 CustomerSchema.index({ normalizedName: 1, normalizedLocation: 1 }, { unique: true });
 
-CustomerSchema.pre('validate', function setNormalizedCustomerFields(next) {
+CustomerSchema.pre('validate', function setNormalizedCustomerFields() {
   if (this.name) {
     this.normalizedName = String(this.name).trim().toLowerCase();
   }
   this.normalizedLocation = String(this.location || '').trim().toLowerCase();
-  next();
 });
 
 export default mongoose.model('Customer', CustomerSchema);
