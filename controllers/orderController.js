@@ -18,35 +18,90 @@ const normalizeItem = (item) => {
   };
 };
 
+const buildOrderPayload = ({ body, user = null }) => {
+  const { customerName, customerEmail, customerPhone, items, notes } = body;
+  const normalizedItems = items.map(normalizeItem);
+  const totalAmount = normalizedItems.reduce((sum, it) => sum + it.price * it.quantity, 0);
+
+  return {
+    orderId: generateOrderId(),
+    userId: user?._id ?? null,
+    customerName:
+      typeof customerName === 'string' && customerName.trim()
+        ? customerName
+        : user
+          ? `${user.firstName || ''} ${user.lastName || ''}`.trim()
+          : '',
+    customerEmail:
+      typeof customerEmail === 'string' && customerEmail.trim()
+        ? customerEmail
+        : user?.email || '',
+    customerPhone:
+      typeof customerPhone === 'string' && customerPhone.trim()
+        ? customerPhone
+        : user?.phone || '',
+    items: normalizedItems,
+    totalAmount,
+    notes: typeof notes === 'string' ? notes : '',
+    status: 'pending',
+  };
+};
+
 // @desc    Create order
 // @route   POST /api/orders
 // @access  Public
 export const createOrder = async (req, res) => {
   try {
-    const { customerName, customerEmail, customerPhone, items, notes } = req.body;
+    const { items } = req.body;
 
     if (!Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ message: 'Order items are required' });
     }
 
-    const normalizedItems = items.map(normalizeItem);
-    const totalAmount = normalizedItems.reduce((sum, it) => sum + it.price * it.quantity, 0);
-
-    const order = await Order.create({
-      orderId: generateOrderId(),
-      customerName: typeof customerName === 'string' ? customerName : '',
-      customerEmail: typeof customerEmail === 'string' ? customerEmail : '',
-      customerPhone: typeof customerPhone === 'string' ? customerPhone : '',
-      items: normalizedItems,
-      totalAmount,
-      notes: typeof notes === 'string' ? notes : '',
-      status: 'pending',
-    });
+    const order = await Order.create(buildOrderPayload({ body: req.body }));
 
     res.status(201).json({
       message: 'Order placed successfully',
       order,
     });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Create order for logged-in customer
+// @route   POST /api/orders/my
+// @access  Private (User)
+export const createMyOrder = async (req, res) => {
+  try {
+    const { items } = req.body;
+
+    if (!Array.isArray(items) || items.length === 0) {
+      return res.status(400).json({ message: 'Order items are required' });
+    }
+
+    const order = await Order.create(buildOrderPayload({ body: req.body, user: req.user }));
+
+    res.status(201).json({
+      message: 'Order placed successfully',
+      order,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Get logged-in customer's orders
+// @route   GET /api/orders/my
+// @access  Private (User)
+export const getMyOrders = async (req, res) => {
+  try {
+    const filters = {
+      $or: [{ userId: req.user._id }, { customerEmail: req.user.email }],
+    };
+
+    const orders = await Order.find(filters).sort({ createdAt: -1 }).lean();
+    res.status(200).json(orders);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

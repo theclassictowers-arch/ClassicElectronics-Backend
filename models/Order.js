@@ -37,6 +37,12 @@ const OrderSchema = new mongoose.Schema(
       sparse: true,
       index: true,
     },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+      index: true,
+    },
     customerName: {
       type: String,
       trim: true,
@@ -79,4 +85,3 @@ const OrderSchema = new mongoose.Schema(
 );
 
 export default mongoose.model('Order', OrderSchema);
-
